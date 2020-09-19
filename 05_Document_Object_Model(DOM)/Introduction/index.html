@@ -1,0 +1,36 @@
+<!--
+    - Introduction to DOM(Document Object Model):
+        - Inline = Not correct way of doing it, hard to debug and possible bugs
+            - Example:
+                <body onload="alert('Hi Turtle');"> // must use inside alert '' instead of ""
+        - Internal:
+            - Using <script>
+            - Example:
+                <script>
+                    alert("Hello");
+                </script>
+        - External File:
+            - Example:
+                - Part 1: add to end of body of html, so it loads up everything else first
+                    <script src="index.js" charset="utf-8"></script>
+                - Part 2: Create .js file and place code in
+                    alert("Fox likes to run");        
+-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Introduction to DOM</title>
+        <link rel="stylesheet" href="CSS/styles.css">
+    </head>
+    <!-- Using Inline: for javascript add onload its for javaScript-->
+    <body onload="alert('Hi Turtle');">
+        <h1>Heading</h1>
+        <!-- Internal -->
+        <script>
+            alert("Hello Sloth");
+        </script>
+        <!--External-->
+        <script src="index.js" charset="utf-8"></script>
+    </body>
+</html>

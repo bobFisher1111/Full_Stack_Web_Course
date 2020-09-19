@@ -1,0 +1,13 @@
+h1{
+    font-size: 30px;
+}
+
+/* When screen width pixel with is between 900 and thousand then text is larger and turns red*/
+@media (min-width: 900px) and (max-width: 1000px){
+h1{
+    color: red;
+    font-size: 60px;
+}
+}
+
+

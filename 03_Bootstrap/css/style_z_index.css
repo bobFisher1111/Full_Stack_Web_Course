@@ -1,0 +1,24 @@
+div{
+    height: 100px;
+    width: 100px;
+    border: 1px solid;
+    position: absolute; /* Must have or else z-index will not work, must be one of the position*/
+}
+
+.red{
+    background-color: red;
+    z-index: 1; /* setting to 1 makes it show up above of everything else*/
+}
+
+.yellow{
+    background-color: yellow;
+    left: 20px;
+    top: 20px;
+}
+
+.blue{
+    background-color: blue;
+    left: 40px;
+    top: 40px;
+    z-index: -1; /* setting it to -1 makes it show up at bottom of everything else*/
+}

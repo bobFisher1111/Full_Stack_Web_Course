@@ -1,0 +1,141 @@
+<!--
+    - Baisc Setup:
+
+        - Bioler Plate:
+            - Is a template of code for setup
+
+        - <meta> tag, tells bowser
+            -  how it should render/ display & give information to search engines about content
+            - defines metadata about an HTML document. Metadata is data (information) about data.
+            - Metadata is used by browsers (how to display content or reload page), search engines (keywords), 
+                and other web services.
+            - charset
+                - Specifies the character encoding for the HTML document
+            - content
+                - Specifies the value associated with the http-equiv or name attribute
+            - http-equiv
+                - Provides an HTTP header for the information/value of the content attribute
+            - name
+                - Specifies a name for the metadata
+                - name ="description" content="Tutorial"
+                - name = "keywords" content="HTML, CSS, XML, JavaScript"
+                - name = "author" content="Bob Fisher"
+                - name = "viewport" content="width-deive-width, initial-scale=1.0"
+
+        - Adding Symbols to <title>
+            - https://unicode-table.com/en/
+        - italic:
+            - The <em> element represents stress emphasis of its contents, 
+            - while the <i> element represents text that is set off from the normal prose
+        - bold tag:
+            - use <strong> over <bold>
+-->
+<!DOCTYPE html> <!-- This tells the browser what version of html -->
+<html>
+    <head> <!-- Head holds information about webpage-->
+        <meta charset="utf-8">
+        <meta name ="description" content="Tutorial">
+        <meta name = "keywords" content="HTML, CSS, XML, JavaScript">
+        <meta name = "author" content="Bob Fisher">
+        <meta name = "viewport" content="width-deive-width, initial-scale=1.0">
+        <title>🐝 Bob The Fisher</title> <!-- Title tells browser name of page, title in tab-->
+    </head>
+    <body>
+        <!-- 
+            Creating Title for Site level 1 heading & centering it
+        -->
+        <center><h1>Bob The Fisher</h1></center>
+        <hr color="blue">
+        <!-- 
+            - Create a Paragraph:
+                <p>
+                    - using <em> tag for italic instead of <i> tag
+                    - use <strong> over <bold>
+        -->
+        <h3>Info:</h3>
+        <p><em><strong>How do you catch a fish?</strong>With your shoulders!</em></p>
+        <p>I'm a man of wisdom, let the fried rice come alive</p>
+        <hr color="blue">
+    
+        <!--
+            - Creating List:
+                <ol>
+                    - ordered list, displayed with letters or numbers
+                <ul>
+                    - unorderd list, displayed with bullet points
+                <li>
+                    - defines list item
+        -->
+        <h3>Video Games:</h3>
+        <ol type='i'> <!-- Added Roman Numerals with type='i' -->
+            <li>Final Fantasy VII</li>
+            <li>Final Fantasy VIII</li>
+            <li>Final Fantasy IX</li>
+        </ol>
+        <h3>Guns:</h3>
+        <ul>
+            <li>1911 .45</li>
+            <li>AR 15</li>
+            <li>Glock 17</li>
+        </ul>
+
+        <!--
+            - Create an image:
+                <img src='nameOfImage.png' alt="info on picture incase image wont display in browser, will
+                    help with search engines">
+                - It can be a url, or an image on computer or in same directory but will need path
+                    outside of same directory
+        -->
+        <!-- Image from the internet -->
+        <img src="http://images1.wikia.nocookie.net/__cb20080428181043/finalfantasy/images/f/fc/CT_Chocobo.png">
+        <!-- from directory -->
+        <center><img src="M:\Full_Stack_Course\01_HTML\Personal_Site\th.jpg"></center>
+        <hr color="blue">
+
+        <!--
+            - Hyper Links
+                - Takes you to one doc to another or website
+                - <a></a>
+                    - <a href=""
+        -->
+        <h3>Favorite Websites:</h3>
+        <ol type="i">
+            <li><a href="https://www.youtube.com/">youtube</a></li>
+            <li><a href="https://www.ign.com/">ign</a></li>
+            <li><a href="https://www.finalfantasyxiv.com/">Final Fantasy XIV</a></li>
+        </ol>
+        <hr color="blue">
+        <h3>Link to Hobbies Page!</h3>
+        <a href="hobbies.html">My Hobbies</a>
+        <hr color="color">
+
+        <!--
+            - Create Table:
+        -->
+        <h3>Work History</h3>
+        <table><!-- Create Table -->
+            <thead><!-- Table Header -->
+                <tr>
+                    <!-- Create Columns(table headers)-->
+                    <th>Dates</th>
+                    <th>Work</th>
+                </tr>
+            </thead>
+            <tbody><!-- Table Body -->
+                <tr> <!-- Creates Single Row(table data) -->
+                    <td>2005-2009</td>
+                    <td>Assembler at Sumitomo</td>
+                </tr>
+                <tr>
+                    <td>2007-2015</td>
+                    <td>Cashier Toys R Us</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <!--Optional-->
+            </tfoot>
+        </table>
+        <hr color='Blue'>
+        <br>
+    </body>
+</html>

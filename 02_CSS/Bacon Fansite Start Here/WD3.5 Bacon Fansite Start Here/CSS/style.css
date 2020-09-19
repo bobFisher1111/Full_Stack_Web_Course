@@ -1,0 +1,52 @@
+/*================================== Tag Selectors =================================*/
+body {
+    background-color: #c7e2b2;
+    color: rgb(63, 11, 11);
+}
+
+/*================================== Class Selectors ===============================*/
+/*
+    - Add style for class just created
+        - bacon and turtle
+        - syntax:
+            .bacon{}
+            .turtle{}
+*/
+.bacon{
+    background-color: darksalmon;
+}
+
+.broccoli{
+    background-color: palevioletred;
+}
+
+.circle_{
+    border-radius: 100%; 
+}
+
+.turtle{
+    background-color: gray;
+}
+
+
+/*================================== id Selectors ==================================*/
+/*
+    - Add style for id just created
+        - heading
+        - syntax:
+            - #heading
+*/
+#heading{
+    color: blue;
+}
+
+/*================================== Sudo Class Selectors ===========================*/
+/*
+    - Add style sudo class just created:
+        - popular one is hover
+        - syntax
+            tagName:hover
+*/
+img:hover{
+    background-color: gold;
+}

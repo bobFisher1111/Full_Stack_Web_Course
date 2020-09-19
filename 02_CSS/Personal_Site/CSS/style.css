@@ -1,0 +1,22 @@
+body {
+    background-color: #c7e2b2;
+}
+
+hr{
+    border-style: none; /* none allows to get rid of default css, and allow change color and other things */
+    border-top-style: dotted;
+    border-color: #5e6f64;
+    border-width: 5px;
+}
+
+img{
+    height: 100px;
+}
+
+h1{
+    color: #206a5d;
+}
+
+h3{
+    color: #206a5d;
+}

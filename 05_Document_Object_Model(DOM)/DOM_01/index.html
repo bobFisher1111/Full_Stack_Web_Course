@@ -1,0 +1,67 @@
+<!-- 
+    - DOM:
+        - Documentation:
+            https://www.w3.org/TR/WD-DOM/introduction.html
+        - Styles Documentation: // Better to use CSS for this
+            https://www.w3schools.com/jsref/dom_obj_style.asp
+        - Properties:
+            - innerHTML
+            - style
+            - firstChild
+        - Methods:
+            - click()
+            - appendChild()
+            - setAttribute()
+        - Example:
+            - Object:
+                - Is a car
+                - Properties:
+                    - describe something something about object
+                    - Example:
+                        - colour
+                        - Number of seats
+                        - Number of Doors
+                    - Get Property:
+                        car.colour; // the color of the car is red
+                    - Set Property:
+                        car.numberOfDoors = 2; // assigning 2 to numberOfDoors on car
+                - Method:
+                    - What object can do
+                    - Example:
+                        - brake()
+                        - drive()
+                        - park()
+                    - Call Method:
+                        car.drive(); // call method on our object
+        
+        - querySelector() & querySelectorAll()
+            - This allows to put in element, class, or id. Better than "getElements()"
+            - prefered way
+            - If query matches multiple, it will grab first one
+                
+ -->
+<!DOCTYPE html>
+<html lang="en-USA" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>DOM</title>
+        <link rel="stylesheet" href="CSS/styles.css">
+    </head>
+    <!-- Using Inline: for javascript add onload its for javaScript-->
+    <body>
+        <h1 id="title"><strong>Hello</strong></h1>
+        <a href="https://www.google.com">Google</a>
+        <input type="checkbox">
+        
+        <button class="btn">Click Me</button>
+
+        <ul id=list>
+            <li class="item"><a href="https://www.google.com">Google</a></li>
+            <li class="item">Second</li>
+            <li class="item">Third</li>
+        </ul>
+    </body>
+    <footer>
+        <script src="index.js" charset="utf-8"></script>
+    </footer>
+</html>

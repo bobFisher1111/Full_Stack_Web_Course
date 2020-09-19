@@ -1,0 +1,162 @@
+/*
+    - Sizing Text:
+        - use rem instead of em or %, it helps prevent errors later on with over sizing from other
+            tags, its most adaptliable and realiable. its dynamic and better than px
+    - Using float:
+        - use it only for wrapping text
+    - CSS Button:
+        https://css3buttongenerator.com/
+*/
+a{
+   color: #11999e; 
+   font-family: 'Montserrat', sans-serif;
+   margin: 10px 20px; /* this will split apart linkin twitter website*/
+   text-decoration: none; /* gets rid of default underline*/
+}
+
+a:hover{
+    color: #EAF6F6;
+}
+
+.animie_skill_description{ /* was a class used for anime paragraph but deleted the class */
+    clear: right;
+}
+
+.anti{
+    text-decoration: underline; /* Underlininig text*/
+}
+
+body{
+    color: #40514E;
+    margin:0; /*Overriding margin and setting it to 0, so it goes all the way to end of the sides */
+    text-align: center;
+    /* change font family for entire project here in the body */
+    font-family: 'Merriweather', serif; /* this comes from embed from google fonts*/
+    
+}
+
+.bottom-cloud{
+    bottom: 300px;
+    left: 250px;
+    position: absolute;
+}
+
+.bottom-container{
+    background-color: #66BFBF;
+    padding: 50px 0 20px;
+}
+
+.contact_message{
+    margin: 40px auto 60px;
+    width: 40%;
+}
+
+.copyright{
+    color: #EAF6F6;
+    font-size: 0.75rem;
+    padding: 20px;
+}
+
+.dragon_image{
+    float: right;
+    margin-left: 30px;
+    width: 25%;
+}
+
+.gamer_skill_description{ /* was a class used for gamer paragraph but deleted the class */
+    clear: left;
+}
+
+h1{
+    color: #66BFBF;
+    font-family: 'Sacramento', Cursive;
+    font-size: 5.625rem;  /*100% equals 16px  or 1 em = 16px*, use these instead of px to make dynamic, use "rem"*/
+    line-height: 2;
+    margin-top:50px auto 0 auto; /*Overriding margin-top and setting it to 0, so it touches top */
+}
+
+h2{
+    color: #66BFBF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: normal; /* gets rid of default bold */
+    padding-bottom: 10px;
+}
+
+h3{
+    color: #11999E;
+    font-family: 'Sacramento', Cursive;
+}
+
+hr{
+    border: dotted #EAF6F6 6px;
+    border-bottom: none;
+    margin: 100px auto;
+    width: 4%;
+}
+
+.intro{
+    width: 30%;
+    margin: auto;
+}
+
+.middle-container{
+    margin: 100px 0; /* 0 is for left & right, this is short hand way of doing it*/
+}
+
+p{
+    line-height: 2;
+}
+.ps4pro_image{
+    float: left; /* this allows for text to move left of the image, instead of below by default*/
+    margin-right: 30px;
+    width: 25%;
+}
+
+.skill-row{
+    width: 50%;
+    margin: 100px auto 100px auto;
+    text-align: left; 
+}
+
+.top_cloud{
+    /* Moving position of the top cloud, must have position: relative in the container working with  */
+    position: absolute;
+    right: 300px;
+    top: 40px;
+
+}
+
+.top-container{
+    background-color: #b0cac7;
+    position: relative;
+    padding-top: 100px
+}
+
+/* Used for the button from website button generator */
+.btn {
+  background: #11cdd4;
+  background-image: -webkit-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -moz-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -ms-linear-gradient(top, #11cdd4, #11999e);
+  background-image: -o-linear-gradient(top, #11cdd4, #11999e);
+  background-image: linear-gradient(to bottom, #11cdd4, #11999e);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #30e3cb;
+  background-image: -webkit-linear-gradient(top, #30e3cb, #2bc4ed);
+  background-image: -moz-linear-gradient(top, #30e3cb, #2bc4ed);
+  background-image: -ms-linear-gradient(top, #30e3cb, #2bc4ed);
+  background-image: -o-linear-gradient(top, #30e3cb, #2bc4ed);
+  background-image: linear-gradient(to bottom, #30e3cb, #2bc4ed);
+  text-decoration: none;
+}

@@ -1,0 +1,91 @@
+<!-- 
+    - Bootstrap:
+        - Grid Layout for Bootstrap:
+            - documentation:
+                https://getbootstrap.com/docs/4.0/layout/grid/
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+
+    <title>Grid Layout!</title>
+  </head>
+  <body>
+    <div class="row">
+        <div class="col" style="background-color:red; border:1px solid;">
+            col
+        </div>
+        <div class="col" style="background-color:red; border:1px solid;">
+            col
+        </div>
+    </div>
+    <!-- Column for only half screen, use class col-6 instead of col, total row 12-->
+    <div class="row">
+        <div class="col-6" style="background-color:green; border:1px solid;">
+            col-6
+        </div>
+        <!-- col-1 is 1/4 of row-->
+        <div class="col-3" style="background-color:green; border:1px solid;">
+            col-3
+        </div>
+        <!-- col-2 is 1/6 of row-->
+        <div class="col-2" style="background-color:green; border:1px solid;">
+            col-2
+        </div>
+        <!-- col-1 is 1/12 of row-->
+        <div class="col-1" style="background-color:green; border:1px solid;">
+            col-1
+        </div>
+    </div>
+
+    <!--
+        - Create Responsive Row, depending on size of window like, phone, laptop, tablet
+            - tablet = 3 columns per row
+                col-md-4
+            - computer = 4 columns per row
+                col-lg-3
+            - phone = 2 column per row
+                col-sm-6
+    -->
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:blue; border: 1px solid">
+            col-md
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:blue; border: 1px solid">
+            col-md
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:blue; border: 1px solid">
+            col-md
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6" style="background-color:blue; border: 1px solid">
+            col-md
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

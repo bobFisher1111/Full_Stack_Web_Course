@@ -1,0 +1,132 @@
+<!--
+    - CSS:
+        - Favicons:
+            - Icons next to name of site on the tab
+            -  https://favicon.cc   
+
+        - For creating layout PESTICIDE in chrome browser is good idea
+            https://chrome.google.com/webstore/detail/pesticide-for-chrome/bblbgcheenepgnnajgfpiicnbbdmmooh
+
+        - div element:
+            - <div> element can be used to style blocks of content
+            - Allows us to divide up content on website
+
+        - Display Property:
+                - Display lets you choose how elements line up, next to one another below and etc
+                - Block:
+                    - does not let sit next to one another like inline, but can change width
+                - Inline:
+                    - elements sit next to one another in line, but cant change with
+                    - only takes up as much space as it needs to like using a 
+                    - common inline elements:
+                        - span tags <span></span>
+                        - image tags <img>
+                        - anchors tags <a>
+                - Inline-Block:
+                        - lets you have blocks can change width and sit next to one another like inline
+                        - display: inline-block
+                - None:
+                        - This gets rid of element
+                - We can also set hidden in here too, hide the element and much more
+
+        - Edit certain parts of a string, like underlining a word:
+                <span></span>
+        
+        - Change Default Layout: Position Property
+                - Static:
+                    - All html is static by default
+                - Relative:
+                    - Changing the default layout
+                    - four coordinates to relative positioning
+                            - Top
+                            - Bottom
+                            - Left
+                            - Right
+                -Absolute:
+                    - Instead of moving postiiong from left, this is from the right, 
+                            because its relative to its parent, its no longer apart of natural flow of document,
+                            you can move it away from default
+                -Fixed:
+                    - Element stays in place as you scoll down or up
+        
+        - Center everything:
+                - Has to be done in the body container or top-container
+                - text-align: center, in order for this to work, css tags like h1 must have margin, 
+                    if it has width in it
+                    - margin: 0 auto 0 auto;
+                - more info:
+                            https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+        
+        - Font Styling:
+            - Monospace - good for using to put computer code, not good for normal text
+            - cursive & fantasy, don't really use. Hard to read.
+            - serif, is by default
+            - sans-serif
+                - you can add font type in front, example
+                    font-family: verdana, sans-serif;
+            - check out a list of fonts and percentage of computer can use it: and gives a list of fall backs
+                https://www.cssfontstack.com/
+                https://fonts.google.com/
+            - Embed into website:
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Children Of Time</title>
+        <link rel="stylesheet" href="css/style.css"> <!-- leave off right now / infront of css, but when publish add -->
+        <link rel="icon" href="favicon.ico">
+        <!-- Embed font inside html -->
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Montserrat:wght@300&family=Sacramento&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- 
+            Create Div:
+                - Allows to divide up content on website
+        -->
+        <div class="top-container">
+            <img class="top_cloud" src="images/cloud.png" alt="cloud image">
+            <h1>The Children Of Time</h1>
+            <h2><span class="anti">Anti</span> Drug Group</h2>
+            <img class="bottom-cloud" src="images/cloud.png" alt="cloud image">
+            <img src="images/mountain.png" alt="mountain image">
+        </div>
+        <div class="middle-container">
+            <div class="profile">
+              <img src="images/squall.jpg" alt="picture of Squall">
+              <h2>Hello.</h2>
+              <p class="intro">Member of Seed.</p>
+            </div>
+            <hr>
+            <div class="skills">
+              <h2>My Skills.</h2>
+              <div class="skill-row">
+                <img class="ps4pro_image" src="images/ps4Pro500.jpg" alt="ps4 pro 500 million">
+                <h3>Gamer</h3>
+                <p>Play mostly JRPG, RPG, Action Games.</p>
+              </div>
+              <div class="skill-row">
+                <img class="dragon_image" src="images/dragonBallZ.png" alt="picture of dragon">
+                <h3>Watch Anime</h3>
+                <p>DBZ, Code Geass, Gundam.</p>
+              </div>
+            </div>
+            <hr>
+            <div class="contact-me">
+              <h2>Get In Touch</h2>
+              <h3>If you love Video Games and Anime.</h3>
+              <p class="contact_message">Lets hangout and chat with some awesome people.</p>
+              <a class="btn" href="mailto:name@email.com">CONTACT ME</a>
+            </div>
+          </div>
+          
+          
+          <div class="bottom-container">
+            <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+            <a class="footer-link" href="https://twitter.com/">Twitter</a>
+            <a class="footer-link" href="https://www.appbrewery.co/">Website</a>
+            <p class="copyright">© 2018 Name Surname.</p>
+          </div>
+          
+    </body>
+</html>

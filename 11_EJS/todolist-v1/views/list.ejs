@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>To Do List</title>
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <!--
@@ -15,23 +16,24 @@
             <h1 style="color: blue"><%= kindOfDay %></h1>
         <% } %>
         -->
-
-        <!-- Better way then above showing the date with correct format -->
-        <h1><%= kindOfDay %></h1>
-
+        <div class="box" id="heading">
+            <!-- Better way then above showing the date with correct format -->
+            <h1><%= kindOfDay %></h1>
+        </div>
         <!-- Creating list for tod list-->
-        <ul>
-            <!-- This loops through array for new items and creates new list -->
-            <% for (var i = 0; i < newListItems.length; i++){ %>
-                <li><%=newListItems[i] %></li>
+        <div class="box">
+             <!-- This loops through array for new items and creates new list -->
+             <% for (var i = 0; i < newListItems.length; i++){ %>
+                <div class="item">
+                    <input type="checkbox">
+                    <p><%=newListItems[i] %></p>
+                </div>
             <%} %>
-        </ul>
-
-        <!-- Create a form to add new item to do list -->
-        <form class="" action="/" method="post">
-            <input type="text" name="newItem">
-            <button type="submit" name="button">Add</button>
-        </form>
-
+            <!-- Create a form to add new item to do list -->
+            <form class="item" action="/" method="post">
+                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                <button type="submit" name="button">+</button>
+            </form>
+        </div>
     </body>
 </html>

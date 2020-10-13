@@ -30,12 +30,14 @@ const app = express();
 
 // use bodyparser
 app.use(bodyParser.urlencoded({extended: true}));
+// allow use static like .css and other files in the public directory
+app.use(express.static("public"));
 
 // set ejs, initialize it
 app.set("view engine", "ejs");
 
 // Creating array with pre set values and then will add to this set of list
-var items = ["Buy Food", "Cook Food", "Eat Food"];
+var items = ["Wake Boys Up", "Give Them Bottle", "Turn On Baby Bus", "Change Dirty Diapers"];
 
 app.get("/", function(req, res){
     var today = new Date();

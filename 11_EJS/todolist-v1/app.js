@@ -37,7 +37,8 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 // Creating array with pre set values and then will add to this set of list
-var items = ["Wake Boys Up", "Give Them Bottle", "Turn On Baby Bus", "Change Dirty Diapers"];
+let items = ["Wake Boys Up", "Give Them Bottle", "Turn On Baby Bus", "Change Dirty Diapers"];
+let workItems = [];
 
 app.get("/", function(req, res){
     var today = new Date();
@@ -89,7 +90,7 @@ app.get("/", function(req, res){
     // for the render, if you need to pass more than one call to list, all must be passed in the same render or it will fail
 
     res.render('list', {
-        kindOfDay: day,
+        listTitle: "Get Boys Ready!!!",
         newListItems: items
     });
 
@@ -100,17 +101,37 @@ app.get("/", function(req, res){
 app.post("/", function(req, res){
 
     // this gets the value from the list.ejs newItem that user puts in
-    var item = req.body.newItem;
-    // append(push) item to items array
-    items.push(item);
+    let item = req.body.newItem;
 
-    // redircet to home route and pass item to render
-    res.redirect("/");
+    // change direction if be added to work or get boys ready
+    if (req.body.list == "Work"){
+        workItems.push(item);
+        res.redirect("/work");
+    }else{
+        // append(push) item to items array
+        items.push(item);
+        // redircet to home route and pass item to render
+        res.redirect("/");
+    }  
 });
 
-    
+// Creating a work route:
+app.get("/work", function(req, res){
+    res.render("list", {
+        listTitle: "Work List", 
+        newListItems: workItems
+    });
+})
 
+app.post("/work", function(req, res){
+    let item = req.body.newItem;
+    workItems.push(item);
+    res.redirect("/work");
+})
 
+app.get("/about", function(req, res){
+    res.render("about");
+}) 
 
 app.listen(3000, function(){
     console.log("<h1>Server started on port 3000</h1>");

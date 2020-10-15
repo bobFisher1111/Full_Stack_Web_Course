@@ -24,6 +24,7 @@
 */
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js"); // this is the module created locally
 
 // creating app as express()
 const app = express();
@@ -41,9 +42,8 @@ let items = ["Wake Boys Up", "Give Them Bottle", "Turn On Baby Bus", "Change Dir
 let workItems = [];
 
 app.get("/", function(req, res){
-    var today = new Date();
-
     /*
+    var today = new Date();
     var currentDay = today.getDay();
     var day = "";
     switch (currentDay){
@@ -79,18 +79,11 @@ app.get("/", function(req, res){
         day = "Week Day";
     }
     */
-
-    var options = {
-            weekday: "long",
-            day: "numeric",
-            month: "long"
-        };
-    
-    var day = today.toLocaleDateString("en-US", options);
     // for the render, if you need to pass more than one call to list, all must be passed in the same render or it will fail
+    let day = date.getDate(); // this is from the module, put parenthese around date thats being returned
 
     res.render('list', {
-        listTitle: "Get Boys Ready!!!",
+        listTitle: "Get Boys Ready!!! " + day,
         newListItems: items
     });
 

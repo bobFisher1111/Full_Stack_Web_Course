@@ -1,3 +1,9 @@
+/*
+    - Start MongoDB Server:
+        - mongod
+    - Start Shell:
+        - mongo
+*/
 // accuire mongoose
 const mongoose = require('mongoose');
 
@@ -6,7 +12,7 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
 
 // Create new Schema: blue print / structure of our data
 const fruitSchema = new mongoose.Schema({
-    // adding valdiation to name and making it required
+    // adding valdiation to name and making it required *************************
     name: {
         type: String,
         required: [true, "Must give it a name"]
@@ -32,13 +38,20 @@ const fruit = new Fruit({
     review: "Pretty solid as a fruit"
 });
 
+const pineapple = new Fruit({
+    name: "Pineapple",
+    score: 9,
+    review: "Good Job Fruit"
+});
 // Save the fruits into Fruits model that is saved into the fruitsDB, comment out or it will save to db each time app.js ran
 //fruit.save();
 
 // Create new Schema for Person Collection:
 const personSchema = new mongoose.Schema({
     name: String,
-    age: Number
+    age: Number,
+    // Adding Relationships between personSchema & fruitSchema ********************
+    favoriteFruit: fruitSchema
 });
 
 // Create Person Collection:
@@ -46,11 +59,12 @@ const Person = mongoose.model("Person", personSchema);
 
 // Create data for the Person Collection
 const person = new Person({
-    name: "Sean",
-    age: 34
+    name: "Josiah & Gabriel",
+    age: 34,
+    favoriteFruit: pineapple
 });
 // saving person to database
-//person.save();
+person.save();
 
 // Saving multiple data to Collection at once: also include logging errors
 const kiwi = new Fruit({
@@ -78,7 +92,6 @@ Fruit.insertMany([kiwi, orange, banana], function(err){
 });
 */
 
-
 // Reading from database, not querying anything
 Fruit.find(function(err, x){
     if (err){
@@ -93,8 +106,37 @@ Fruit.find(function(err, x){
     // close connection when done
     mongoose.connection.close();
 });
-
+/*
 // Update data using mongoose:
-
+// Step 1: give id you want to update,  _id is from the shell, db.fruits.find()
+// step 2. what you want to update
+// step 3. error, log any errors that happen
+/*
+Fruit.updateOne({_id: "5f98d813bf2e4e11e05b2db2"}, {name: "Peach"}, function(err){
+    if (err){
+        console.log(err);
+    }else{
+        console.log("successfully updated the document");
+    }
+});
+*/
+/*
 // Delete data using mongoose:
-
+Fruit.deleteOne({name: "Peach"}, function(err){
+    if (err){
+        console.log(err);
+    }else{
+        console.log("Successfully deleted the document");
+    }
+});
+*/
+/*
+// delete all
+Person.deleteMany({name: "Sean"}, function(err){
+    if(err){
+        console.log(err);
+    }else{
+        console.log("Successfully deleted all the documents");
+    }
+});
+*/

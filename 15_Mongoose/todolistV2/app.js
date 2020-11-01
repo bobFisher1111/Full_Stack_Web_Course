@@ -1,5 +1,3 @@
-//jshint esversion:6
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -69,7 +67,6 @@ const List = mongoose.model("List", listSchema);
 // creating the custome routes
 app.get("/:customListName", function(req, res){
   const customListName = req.params.customListName;
-
   List.findOne({name:customListName}, function(err, x){
     if (!err){
       if(!x){
@@ -91,7 +88,6 @@ app.get("/:customListName", function(req, res){
 app.post("/", function(req, res){
   const itemName = req.body.newItem;
   const listName = req.body.list; // list is the name of the value of the button listTitle
-
   // mongoose create doc
   const item = new Item({
     name: itemName

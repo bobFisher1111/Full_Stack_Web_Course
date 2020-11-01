@@ -12,7 +12,7 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
 
 // Create new Schema: blue print / structure of our data
 const fruitSchema = new mongoose.Schema({
-    // adding valdiation to name and making it required *************************
+    // adding valdiation to name and making it required 
     name: {
         type: String,
         required: [true, "Must give it a name"]
@@ -111,7 +111,6 @@ Fruit.find(function(err, x){
 // Step 1: give id you want to update,  _id is from the shell, db.fruits.find()
 // step 2. what you want to update
 // step 3. error, log any errors that happen
-/*
 Fruit.updateOne({_id: "5f98d813bf2e4e11e05b2db2"}, {name: "Peach"}, function(err){
     if (err){
         console.log(err);

@@ -13,11 +13,11 @@ app.use(express.static("public"));
 // connect to mongoose database
 mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true});
 // create Schema:
-const itemsScema = {
+const itemsSchema = {
   name: String
 }
 // Create the model based on Schema
-const Item = mongoose.model("Item", itemsScema);
+const Item = mongoose.model("Item", itemsSchema);
 
 const item1 = new Item({
   name: "Welcome to your todolist!"
@@ -30,30 +30,95 @@ const item3 = new Item({
 });
 // Create an array of the Item
 const defaultItems = [item1, item2, item3];
-// InsertMany into the Item Collection:
-Item.insertMany(defaultItems, function(err){
-  if (err){
-    console.log(err);
-  }else{
-    console.log("Success, added defaultItems to the Item collection");
-  }
-});
 
 app.get("/", function(req, res) {
-  res.render("list", {listTitle: "Today", newListItems: items});
+  // access here the database to the list:
+  // empty {}, will give all since not querying
+  Item.find({}, function(err, x){
+    // if empty database then create it, else render it
+    if (x.length === 0){
+      // InsertMany into the Item Collection:
+      Item.insertMany(defaultItems, function(err){
+        if (err){
+          console.log(err);
+        }else{
+          console.log("Success, added defaultItems to the Item collection");
+        }
+      });
+      // once created then it redirects back to home and loads it
+      res.redirect("/");
+    } else{
+      res.render("list", {listTitle: "Today", newListItems: x});
+    }
+  });
+});
+
+/* 
+  - Express Route Parameters:
+    - app.get("/category:<paramName>", function(req, res){//Access req.params.paramName});
+    - verify that that name doesn't already exist with:
+      - Mogoose findOne() function
+*/
+// create schema for it
+const listSchema = {
+  name: String,
+  items: [itemsSchema]
+};
+// create mongoose model
+const List = mongoose.model("List", listSchema);
+// creating the custome routes
+app.get("/:customListName", function(req, res){
+  const customListName = req.params.customListName;
+
+  List.findOne({name:customListName}, function(err, x){
+    if (!err){
+      if(!x){
+        // Create a new list:
+        const list = new List({
+          name: customListName,
+          items: defaultItems
+        });
+        list.save();
+        res.redirect("/" + customListName);
+      }else{
+        // Show an existing list:
+        res.render("list", {listTitle: x.name, newListItems: x.items});
+      }
+    }
+  });
 });
 
 app.post("/", function(req, res){
+  const itemName = req.body.newItem;
+  const listName = req.body.list; // list is the name of the value of the button listTitle
 
-  const item = req.body.newItem;
-
-  if (req.body.list === "Work") {
-    workItems.push(item);
-    res.redirect("/work");
-  } else {
-    items.push(item);
+  // mongoose create doc
+  const item = new Item({
+    name: itemName
+  });
+  // checks to see if when creating new item equals today if not, then it will use findOne and create it to that
+  if (listName === "Today"){
+    item.save();
+    // show it, by rerouting back to home
     res.redirect("/");
+  }else{
+    List.findOne({name: listName}, function(err, x){
+      x.items.push(item);
+      x.save();
+      res.redirect("/" + listName)
+    })
   }
+});
+
+app.post("/delete", function(req, res){
+  const checkedItemID = req.body.checkbox; // this will tap into the value of the id_ in mongo
+  // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove , requires a callback 
+  Item.findByIdAndRemove(checkedItemID, function(err){
+    if (!err){
+      console.log("Successfully deleted checked item.");
+      res.redirect("/");
+    }
+  });
 });
 
 app.get("/work", function(req,res){

@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const _ = require("lodash");
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -66,7 +67,7 @@ const listSchema = {
 const List = mongoose.model("List", listSchema);
 // creating the custome routes
 app.get("/:customListName", function(req, res){
-  const customListName = req.params.customListName;
+  const customListName = _.capitalize(req.params.customListName);
   List.findOne({name:customListName}, function(err, x){
     if (!err){
       if(!x){
@@ -108,14 +109,28 @@ app.post("/", function(req, res){
 
 app.post("/delete", function(req, res){
   const checkedItemID = req.body.checkbox; // this will tap into the value of the id_ in mongo
-  // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove , requires a callback 
-  Item.findByIdAndRemove(checkedItemID, function(err){
-    if (!err){
-      console.log("Successfully deleted checked item.");
-      res.redirect("/");
-    }
-  });
+  const listName = req.body.listName;
+
+  if (listName === "Today"){
+     // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndRemove , requires a callback 
+    Item.findByIdAndRemove(checkedItemID, function(err){
+      if (!err){
+        console.log("Successfully deleted checked item.");
+        res.redirect("/");
+        // this will delete items other than Today list, using $pull operator & findOneAndUpdate()
+      } 
+    });
+  } else {
+    // https://docs.mongodb.com/manual/reference/operator/update/pull/
+    // https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/
+    List.findOneAndUpdate({name: listName}, {$pull: {items: {_id: checkedItemID}}}, function(err, x){
+      if (!err) {
+        res.redirect("/" + listName);
+      }
+    });
+  }
 });
+
 
 app.get("/work", function(req,res){
   res.render("list", {listTitle: "Work List", newListItems: workItems});

@@ -12,7 +12,8 @@
                         - app.post(function(req, res){
                         });
                 - PUT:
-                    - Update: the entire entry of like a database, replace previous one
+                    - Update: the entire entry of like a database, replace previous one, if you dont include everything from before it will 
+                        not include for example if has 2 keys: title & conent, if only updating one, then it will only have that one
                         - app.put(function(req, res){
                         });
                 - PATCH:
@@ -52,5 +53,7 @@
                 }
             - Create model for the schema:
                 - const Article = mongoose.model("Article", articleSchema);
+    - RESTful Get:
+        - Get all the articles:
                         
 */

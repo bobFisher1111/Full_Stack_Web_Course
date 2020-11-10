@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -5,6 +6,9 @@ const mongoose = require("mongoose");
 const encrypt = require("mongoose-encryption");
 
 const app = express();
+
+// log api key use process
+console.log(process.env.API_KEY);
 
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
@@ -23,9 +27,9 @@ const userSchema = new mongoose.Schema({
 
 // Step 2: Encryption of database
 // creating a secret string, but there are other ways of doing it
-const secret = "Thisisourlittlesecret." // this is string we are using for encryption
+//const secret = "Thisisourlittlesecret." // this is string we are using for encryption
 // this will encrypt entire database, add encryptedField so it only does what you want
-userSchema.plugin(encrypt, {secret: secret, encryptedFields: ["password"]}); 
+userSchema.plugin(encrypt, {secret: process.env.SECRET, encryptedFields: ["password"]}); 
 
 // create model from schema:
 const User = new mongoose.model("User", userSchema);

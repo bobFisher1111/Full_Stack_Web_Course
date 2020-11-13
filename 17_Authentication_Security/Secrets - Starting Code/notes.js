@@ -33,5 +33,26 @@
                 - It uses salt routes:
                     - take password + salt then bcrypt it then add salt again
                         and then bycrpt it, as many times as needed
+        - Level 5: Cookies & Sessions:
+            - Cookies:
+                - HTTP cookie - Wikipediaen.wikipedia.org › wiki › HTTP_cookie An HTTP cookie is a small 
+                    piece of data stored on the user's computer by the web browser while browsing a website.
+            - Sessions (Cookie):
+                -  Is a period of time browser interacts with server, like logging in and browsing website,
+                    website dosn't need to ask again to log in, until a period of time. When user logs out
+                    that is when session ends and cookie for session is destoryed
+            - Passport:
+                - docs & install:
+                    - https://www.npmjs.com/package/passport
+                    - https://www.npmjs.com/package/passport-local
+                    - https://www.npmjs.com/package/passport-local-mongoose
+                    - https://www.npmjs.com/package/express-session
 
+                - Used to implement cookies and session
+                - Serialize: Creates message inside Cookie
+                - Deserialize: Descovers the message inside the cookies
+                - Code must be placed in same order as in the app.js setting it up
+
+        - Level 6: OAuth 2.0 Implement Sign in with Google
+            - 
 */

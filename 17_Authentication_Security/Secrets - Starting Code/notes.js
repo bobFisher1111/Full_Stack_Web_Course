@@ -54,5 +54,36 @@
                 - Code must be placed in same order as in the app.js setting it up
 
         - Level 6: OAuth 2.0 Implement Sign in with Google
-            - 
+            - Can be used for multiple things like logging in, we will use facebook login for our site
+                - 1. Granular Access Levels:
+                    - User logs into facebook, you can request certains things from facebook
+                - 2. Read/Read + Write Access
+                - 3. Revoke Access
+            - How it works:
+                - The user gets sent over to facebook or whatever to log in and then Auth code sent 
+                    to the website, authenticate them
+                - Auth Code VS Access Token:
+                    - Auth Code is one time visit
+                    - Access Token last longer and we can retrieve email and other things form it
+            - passport-google-oauth20
+                    - Install:
+                        - http://www.passportjs.org/packages/passport-google-oauth/
+                        - passport-google-oauth20
+                    - After install must create a project on google developers console
+                        - https://console.developers.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project
+                    - Setup credntials
+                        -  scopes: 
+                            - auth/userinfo/email
+                            - auth/userinfo/profile
+                            - openid // associate with your personal info on Google
+                        - Create OAuth client ID // update in production for local testing 
+                            - web app
+                            - authorized javascript origins
+                                - http://localhost:3000
+                            - redirect url:
+                                - http://localhost:300/auth/google/secrets
+                            - client id:
+                                247879929359-jv7ck4i8vbm25pgvtje45f32usa94s1u.apps.googleusercontent.com
+                            - client secrets:
+                                M5kJrB2FV12KOnMzuonjKbXH
 */

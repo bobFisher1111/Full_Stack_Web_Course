@@ -10,6 +10,10 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+// used to work with saving passport-google-oauth20 when logging in to save time on code, https://www.npmjs.com/package/mongoose-findorcreate
+var findOrCreate = require('mongoose-findorcreate')
 
 const app = express();
 
@@ -40,11 +44,14 @@ mongoose.set("useCreateIndex", true); // fix deprecation warning collection.ensu
 // Create Schema for database, add encryption with = new mongoose.Schema from the mongoose class
 const userSchema = new mongoose.Schema({
     email: String,
-    password: String
+    password: String,
+    googleId: String // this was add when apply google aouth
 });
 
 // Passport Part 4: add passport-local-mongoose plugin to the schema created above:
 userSchema.plugin(passportLocalMongoose); // this is where we will hash & salt and save users
+// Step 1. Google OAUTH20
+userSchema.plugin(findOrCreate); // this is coming from mongoose-findorcreate
 
 // Step 2: Encryption of database
 // creating a secret string, but there are other ways of doing it
@@ -57,12 +64,51 @@ const User = new mongoose.model("User", userSchema);
 
 // Passport Part 5: Use createStragety instead of authneticate:
 passport.use(User.createStrategy());
+/* replaced with step4. Google auth20 way
 passport.serializeUser(User.serializeUser()); //Serialize: Creates message inside Cookie
 passport.deserializeUser(User.deserializeUser());//Deserialize: Descovers the message inside the cookies
+*/
+
+// Step 5. Google OAUTH20 serilize user & deserilize user
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+// Step 2. Google OAUTH20
+passport.use(new GoogleStrategy({
+    clientID : process.env.CLIENT_ID, // Client Id from .env file, renamed this clientID, fix error
+    //consumerSecret: process.env.CLIENT_SECRET, // Client Secret from .env file
+    clientSecret: process.env.CLIENT_SECRET, // Client Secret from .env file
+    callbackURL: process.env.CALL_BACK_URL, // this is regestered on the site saved in the .env file
+    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+  },
+  function(token, tokenSecret, profile, done) {
+      console.log(profile);
+      User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        return done(err, user);
+      });
+  }
+));
 
 app.get("/", function(req, res){
     res.render("home");
 });
+
+// Step 3. Google OAUTH20 - this sends to google to sign in
+app.get("/auth/google",
+  passport.authenticate('google', { scope: ["profile"] }) // this will get the user email and other profile information
+);
+
+// Step 4. Google OAUTH20, after auth, sends back to secrets or login page
+app.get("/auth/google/secrets", // this is what we put on google dev redirect would be, match exactly
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect to secrets
+    res.redirect('/secrets');
+  });
 
 app.get("/login", function(req, res){
     res.render("login");
@@ -110,6 +156,7 @@ app.post("/register", function(req, res){
             console.log(err);
             res.redirect("/register");
         }else{
+            // this is the local strategy
             passport.authenticate("local")(req, res, function(){
                 res.redirect("/secrets");
             });

@@ -43,9 +43,11 @@ mongoose.set("useCreateIndex", true); // fix deprecation warning collection.ensu
 // Step 1: Encrytion of database
 // Create Schema for database, add encryption with = new mongoose.Schema from the mongoose class
 const userSchema = new mongoose.Schema({
+    username: {type: String, unique: true},
     email: String,
     password: String,
-    googleId: String // this was add when apply google aouth
+    googleId: String, // this was add when apply google aouth
+    secret: Array
 });
 
 // Passport Part 4: add passport-local-mongoose plugin to the schema created above:
@@ -140,14 +142,18 @@ app.post("/register", function(req, res){
     });
 });
 /*
-    - Passport way of doing it Part 1: Activate
+   - Step 3: Submit own secrets
 */
 app.get("/secrets", function(req, res){
-    if (req.isAuthenticated()){
-        res.render("secrets");
-    }else{
-        res.redirect("/login");
-    }
+    User.find({"secret": {$ne: null}}, function(err, foundUsers){ // means not equal to null
+        if (err){
+            console.log(err);
+        }else{
+            if (foundUsers){
+                res.render("secrets", {usersWithSecrets: foundUsers})
+            }
+        }
+    });
 });
 app.post("/register", function(req, res){
     // Passport way of doing it:
@@ -208,6 +214,35 @@ app.post("/login", function(req, res){
     });
 });
 */
+
+// Step 1: Submit own secrets
+app.get("/submit", function(req, res){
+    if (req.isAuthenticated()){
+        res.render("submit");
+    }else{
+        res.redirect("/login");
+    }
+});
+
+// Step 2: Submit own secrets, make a post
+app.post("/submit", function(req, res){
+    const submittedSecret = req.body.secret;
+
+    console.log(req.user._id);
+
+    User.findById(req.user._id, function(err, foundUser){
+        if (err){
+            console.log(err);
+        } else{
+            if (foundUser){
+                foundUser.secret = submittedSecret;
+                foundUser.save(function(){
+                    res.redirect("/secrets");
+                });
+            }
+        }
+    });
+});
 
 /*
      - Passport way of doing it Part 3: Deactivate

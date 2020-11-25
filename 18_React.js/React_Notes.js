@@ -23,6 +23,10 @@
                 const name = "Sean";
                 // html code inside javaScript & then javaScript inside html with using {}
                 ReactDOM.render(<h1> Hello {name}</h1>. document.getElementById("root"));
-            - But cannot inject statments like if statements like that, you have to do it another way:
-                -
+            - But cannot inject statments like if statements like that
+            
+        - Create React App in the terminal:
+            - npx create-react-app my-app
+            - cd my-app
+            - npm start
 */

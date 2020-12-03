@@ -1,0 +1,32 @@
+/*
+    - Create Login flow, check in if they are logged in or logged out.
+        - If not logged in will go to login form, if logged in greet them
+    - Ternary Operator:
+        - If you want to use expression inside of jsx, use Ternary Operator, Cant do an if statement but
+            Ternary Operator will work
+        - Syntax:
+            CONDITION ? DO IF TRUE : DO IF FALSE
+        - Example:
+            - isCloudy === true ? bringUmbrella() : bringSunscreen()
+        - Convert IF statment into Ternary Operator:
+            - If Statment:
+                if (isLoggedIn === true){
+                    return <h1>Hello</h1>;
+                }else{
+                    return <Login />;
+                }
+            - Ternary Operator:
+                {isLoggedIn === true ? <h1>Hello</h1> : <Login />}
+
+    - && Operator:
+        - Syntax for JavaScript:
+            - (EXPRESSION && EXPRESSION)
+                (x>3 && x<7)
+                    - if x = 1, it will evaluate that it is false and not do the second part x<7
+        - Syntax for React
+            - CONDITON && EXPRESSION 
+                - true && EXPRESSION
+                - false && EXPRESSION
+        - Example:
+            {currentTime > 12 && <h1>Still working?</h1>}
+*/
